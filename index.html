@@ -14,6 +14,7 @@
 body {
   font-family: 'Kanit', sans-serif;
 }
+/* Hide scrollbar */
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -21,6 +22,7 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+/* Animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
@@ -55,15 +57,18 @@ body {
 <div class="absolute top-[22%] left-[18%] text-[#312A4A]/20 animate-float" style="animation-duration: 4s;"><i data-lucide="moon" style="width:24px; height:24px; fill:currentColor;"></i></div>
 <div class="absolute top-[32%] right-[8%] text-[#8E68D1]/30 animate-float-delayed"><i data-lucide="star" style="width: 14px; height: 14px; fill: currentColor;"></i></div>
 
-<!-- Admin Login Button & Hamburger Menu Icon (Top Right) -->
+<!-- Header / Top Bar with Admin Login & Hamburger Menu -->
 <div class="absolute top-6 right-6 z-50 flex items-center gap-2">
-<button onclick="openAdminLogin()" class="p-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-xl border border-white/20 shadow-[0_4px_15px_rgba(0,0,0,0.1)] transition-all text-white" title="Admin Login">
-  <i data-lucide="lock" style="width: 20px; height: 20px;"></i>
-</button>
-<button onclick="toggleMenu()" class="p-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-xl border border-white/20 shadow-[0_4px_15px_rgba(0,0,0,0.1)] transition-all text-white">
-<i id="icon-menu" data-lucide="menu" style="width: 24px; height:24px;"></i>
-<i id="icon-x" data-lucide="x" style="width:24px; height:24px;" class="hidden"></i>
-</button>
+  <!-- Admin Login Button (Email & Password Modal Trigger) -->
+  <button onclick="openAdminLogin()" class="p-2.5 bg-white/10 hover:bg-white/25 backdrop-blur-md rounded-xl border border-white/20 shadow-[0_4px_15px_rgba(0,0,0,0.1)] transition-all text-white flex items-center gap-1.5 text-xs font-medium" title="Admin Login">
+    <i data-lucide="shield-check" style="width: 18px; height: 18px;"></i>
+    <span class="hidden sm:inline">Admin</span>
+  </button>
+  <!-- Hamburger Menu Icon -->
+  <button onclick="toggleMenu()" class="p-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-xl border border-white/20 shadow-[0_4px_15px_rgba(0,0,0,0.1)] transition-all text-white">
+    <i id="icon-menu" data-lucide="menu" style="width: 24px; height: 24px;"></i>
+    <i id="icon-x" data-lucide="x" style="width: 24px; height: 24px;" class="hidden"></i>
+  </button>
 </div>
 
 <!-- Dropdown Menu Overlay -->
@@ -72,7 +77,8 @@ body {
 <div class="absolute top-20 right-6 w-48 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/50 overflow-hidden z-50 animate-fadeIn">
 <div class="flex flex-col py-2">
 <button id="btn-HOME" onclick="switchTab('HOME')" class="px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 bg-[#8E68D1]/10 text-[#8E68D1] border-l-4 border-[#8E68D1]">Home</button>
-<button id="btn-REVIEWS" onclick="switchTab('REVIEWS')" class="px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 text-stone-600 hover:bg-[#F7F4FB] hover:text-[#8E68D1] border-l-4 border-transparent">Reviews</button>
+<button id="btn-T.O.S" onclick="switchTab('T.O.S')" class="px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 text-stone-600 hover:bg-[#F7F4FB] hover:text-[#8E68D1] border-l-4 border-transparent">T.O.S</button>
+<button id="btn-REVIEWS" onclick="switchTab('REVIEWS')" class="px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 text-stone-600 hover:bg-[#F7F4FB] hover:text-[#8E68D1] border-l-4 border-transparent">Store Reviews</button>
 <button id="btn-CONTACT" onclick="switchTab('CONTACT')" class="px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 text-stone-600 hover:bg-[#F7F4FB] hover:text-[#8E68D1] border-l-4 border-transparent">Contact</button>
 </div>
 </div>
@@ -87,8 +93,8 @@ body {
 <!-- HOME -->
 <div id="content-HOME" class="flex flex-col items-center text-center animate-fadeIn relative mt-6">
 <div class="absolute top-0 right-4 text-[#D4C3EF] animate-float"><i data-lucide="sparkles" style="width:24px; height:24px;"></i></div>
-<div class="w-48 h-48 sm:w-56 sm:h-56 rounded-full border-[6px] border-white shadow-[0_8px_30px_rgba(49,42,74,0.15)] mb-8 overflow-hidden bg-white flex items-center justify-center relative z-10 group cursor-pointer" onclick="triggerImageEdit('profile-img')">
-<img id="profile-img" src="IMG_6210.png" alt="Profile" class="w-full h-full object-cover"/>
+<div class="w-48 h-48 sm:w-56 sm:h-56 rounded-full border-[6px] border-white shadow-[0_8px_30px_rgba(49,42,74,0.15)] mb-8 overflow-hidden bg-white flex items-center justify-center relative z-10 editable-img-container">
+<img id="img-profile" src="IMG_6210.png" alt="Profile" class="w-full h-full object-cover"/>
 </div>
 <div class="space-y-3 relative z-10 w-full flex flex-col items-center mb-6">
 <h1 class="text-3xl sm:text-4xl font-extrabold text-[#312A4A] tracking-[0.15em] uppercase drop-shadow-sm">Fumiko Poko</h1>
@@ -99,7 +105,7 @@ body {
 <div class="w-8 h-[2px] bg-[#D4C3EF] rounded-full my-4 relative z-10"></div>
 <div class="text-[#312A4A]/80 text-[10px] sm:text-xs font-semibold tracking-widest uppercase space-y-2 relative z-10 mb-8">
 <p>Status: Open for this month</p>
-<p class="text-[#8E68D1]">(Applications are accepted in rounds )</p>
+<p class="text-[#8E68D1]">(Applications are accepted in rounds)</p>
 </div>
 <div class="text-stone-500 text-[11px] font-medium leading-relaxed relative z-10 flex flex-col items-center gap-1 mb-8">
 <span>Welcome to Fumiko Poko</span>
@@ -112,89 +118,100 @@ body {
 </div>
 </div>
 
-<!-- REVIEWS (Replaced T.O.S with Customer Feedback / Shop Reviews) -->
+<!-- T.O.S -->
+<div id="content-T.O.S" class="hidden animate-fadeIn">
+<div class="text-center mb-6 relative mt-4">
+<p class="text-[#E5DDF0] font-medium text-sm mb-1 drop-shadow-sm">Rules & Conditions</p>
+<h2 class="text-2xl font-bold text-[#F7F4FB] flex items-center justify-center gap-2 drop-shadow-md">
+<i data-lucide="star" class="text-[#D4C3EF]" style="width:18px; height: 18px; fill:currentColor;"></i>
+Term of service
+<i data-lucide="star" class="text-[#D4C3EF]" style="width: 18px; height: 18px; fill:currentColor;"></i>
+</h2>
+</div>
+<div class="bg-[#F7F4FB] rounded-[24px] p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[#D4C3EF]/40 relative overflow-hidden">
+<div class="absolute -right-4 -top-4 text-[#D4C3EF] opacity-40"><i data-lucide="moon" style="width:64px; height:64px; fill:currentColor;"></i></div>
+<div class="flex items-center gap-2 mb-4 pb-3 border-b border-[#D4C3EF]/40 relative z-10">
+<i data-lucide="alert-circle" class="text-[#312A4A]" style="width:20px; height:20px;"></i>
+<h3 class="font-bold text-[#312A4A]"> .° Term of service °.* </h3>
+</div>
+<ul class="space-y-2 mt-4 relative z-10">
+<li class="flex items-start gap-3 text-stone-600 mb-3 text-sm leading-relaxed"><div class="mt-0.5 shrink-0 text-[#8E68D1]"><i data-lucide="check-circle-2" style="width: 16px; height:16px;"></i></div><div>บรีฟก่อนโอนทุกครั้ง</div></li>
+<li class="flex items-start gap-3 text-stone-600 mb-3 text-sm leading-relaxed"><div class="mt-0.5 shrink-0 text-[#8E68D1]/60"><i data-lucide="alert-circle" style="width:16px; height: 16px;"></i></div><div>งานเร่ง x2 (ได้งานภายใน 1-2 ชั่วโมง)<br/><span class="text-xs text-[#8E68D1] font-medium">ลัดคิว +30.- / งาน</span></div></li>
+<li class="flex items-start gap-3 text-stone-600 mb-3 text-sm leading-relaxed"><div class="mt-0.5 shrink-0 text-[#8E68D1]/60"><i data-lucide="alert-circle" style="width:16px; height: 16px;"></i></div><div>ไม่รับทำงานตามร้านอื่นทุกกรณี</div></li>
+<li class="flex items-start gap-3 text-stone-600 mb-3 text-sm leading-relaxed"><div class="mt-0.5 shrink-0 text-[#8E68D1]/60"><i data-lucide="alert-circle" style="width:16px; height: 16px;"></i></div><div>กรณียื่นเรฟ ต้องเป็นเรฟของตัวเองเท่านั้น</div></li>
+<li class="flex items-start gap-3 text-stone-600 mb-3 text-sm leading-relaxed"><div class="mt-0.5 shrink-0 text-[#312A4A]"><i data-lucide="alert-circle" style="width:16px; height: 16px;"></i></div><div>ยกเลิกงาน หัก 50% กรณีเริ่มงานแล้วไม่คืนเงิน</div></li>
+<li class="flex items-start gap-3 text-stone-600 mb-3 text-sm leading-relaxed"><div class="mt-0.5 shrink-0 text-[#8E68D1]/60"><i data-lucide="alert-circle" style="width:16px; height: 16px;"></i></div><div>ไม่รับแก้งานหลังส่งงานทุกกรณี <span class="text-xs">(ยกเว้นความผิดของร้าน)</span></div></li>
+</ul>
+</div>
+</div>
+
+<!-- REVIEWS (เปลี่ยนจากหน้า Term เดิมมาเป็นหน้ารีวิวร้านค้าตามที่ขอ) -->
 <div id="content-REVIEWS" class="hidden animate-fadeIn">
 <div class="text-center mb-6 relative mt-4">
 <p class="text-[#E5DDF0] font-medium text-sm mb-1 drop-shadow-sm">Customer Feedback</p>
 <div class="flex items-center justify-center gap-3">
-  <!-- โลโก้ทางซ้ายของหัวข้อ -->
-  <div class="w-10 h-10 rounded-full border-[2px] border-white shadow-md overflow-hidden bg-white flex items-center justify-center cursor-pointer" onclick="triggerImageEdit('review-logo-img')">
-    <img id="review-logo-img" src="IMG_6210.png" alt="Logo" class="w-full h-full object-cover"/>
+  <!-- โลโก้ทางซ้ายของหัวข้อ Customer Reviews และ Shop Reviews -->
+  <div class="w-10 h-10 rounded-full border-2 border-white shadow-md overflow-hidden bg-white flex items-center justify-center shrink-0">
+    <img src="IMG_6210.png" alt="Logo" class="w-full h-full object-cover"/>
   </div>
   <h2 class="text-2xl font-bold text-[#F7F4FB] flex items-center gap-2 drop-shadow-md">
+    <i data-lucide="star" class="text-[#D4C3EF]" style="width:18px; height: 18px; fill:currentColor;"></i>
     Shop Reviews
+    <i data-lucide="star" class="text-[#D4C3EF]" style="width: 18px; height: 18px; fill:currentColor;"></i>
   </h2>
 </div>
 </div>
 
-<!-- สถิติรีวิว ฝั่งซ้ายดาว ฝั่งขวาคนรีวิว -->
-<div class="bg-white rounded-[24px] p-4 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[#D4C3EF]/40 mb-6 flex justify-between items-center text-center">
-<div class="flex-1 border-r border-[#D4C3EF]/30 flex flex-col items-center">
-  <div class="flex items-center gap-1 text-amber-500 font-bold text-lg">
-    <i data-lucide="star" style="width:20px; height:20px; fill:currentColor;"></i> 4.8
+<!-- สถิติรีวิว: ฝั่งซ้ายคะแนนดาว 4.8 | ฝั่งขวาจำนวนคนรีวิว 88 คน (เปลี่ยนอีโมจิเป็นไอคอน Lucide) -->
+<div class="bg-white rounded-[24px] p-5 shadow-[0_8px_30px_rgba(142,104,209,0.08)] mb-6 border border-[#D4C3EF]/30 flex items-center justify-around text-center">
+  <div class="flex items-center gap-2">
+    <div class="p-2 bg-amber-50 rounded-xl text-amber-400">
+      <i data-lucide="star" style="width:22px; height:22px; fill:currentColor;"></i>
+    </div>
+    <div class="text-left">
+      <p class="text-lg font-bold text-[#312A4A]" id="review-score-avg">4.8 ดาว</p>
+      <p class="text-[11px] text-stone-400">คะแนนเฉลี่ย</p>
+    </div>
   </div>
-  <span class="text-xs text-stone-500">คะแนนร้านค้า</span>
-</div>
-<div class="flex-1 flex flex-col items-center">
-  <div class="flex items-center gap-1 text-[#8E68D1] font-bold text-lg">
-    <i data-lucide="message-square" style="width:20px; height:20px;"></i> <span id="total-reviews-count">88</span>
+  <div class="h-8 w-[1px] bg-stone-200"></div>
+  <div class="flex items-center gap-2">
+    <div class="p-2 bg-[#8E68D1]/10 rounded-xl text-[#8E68D1]">
+      <i data-lucide="message-square" style="width:22px; height:22px;"></i>
+    </div>
+    <div class="text-left">
+      <p class="text-lg font-bold text-[#312A4A]" id="review-total-count">88 คน</p>
+      <p class="text-[11px] text-stone-400">รีวิวทั้งหมด</p>
+    </div>
   </div>
-  <span class="text-xs text-stone-500">คนรีวิวแล้ว</span>
-</div>
-</div>
-
-<!-- ฟอร์มส่งรีวิวของลูกค้า -->
-<div class="bg-[#F7F4FB] rounded-[24px] p-5 shadow-sm border border-[#D4C3EF]/40 mb-6">
-<h3 class="font-bold text-[#312A4A] text-sm mb-3 flex items-center gap-2">
-  <i data-lucide="star" style="width:16px; height:16px; fill:currentColor;" class="text-[#8E68D1]"></i> เขียนรีวิวและให้คะแนนร้านค้า
-</h3>
-<form id="review-form" onsubmit="submitReview(event)" class="space-y-3">
-  <div>
-    <label class="block text-xs font-medium text-stone-600 mb-1">ชื่อผู้รีวิว</label>
-    <input type="text" id="reviewer-name" required class="w-full text-xs p-2.5 rounded-xl border border-[#D4C3EF]/50 bg-white focus:outline-none focus:border-[#8E68D1]" placeholder="ชื่อของคุณ...">
-  </div>
-  <div>
-    <label class="block text-xs font-medium text-stone-600 mb-1">ให้คะแนนดาว</label>
-    <select id="reviewer-rating" class="w-full text-xs p-2.5 rounded-xl border border-[#D4C3EF]/50 bg-white focus:outline-none focus:border-[#8E68D1]">
-      <option value="5">⭐⭐⭐⭐⭐ (5 ดาว)</option>
-      <option value="4">⭐⭐⭐⭐ (4 ดาว)</option>
-      <option value="3">⭐⭐⭐ (3 ดาว)</option>
-      <option value="2">⭐⭐ (2 ดาว)</option>
-      <option value="1">⭐ (1 ดาว)</option>
-    </select>
-  </div>
-  <div>
-    <label class="block text-xs font-medium text-stone-600 mb-1">ข้อความรีวิว</label>
-    <textarea id="reviewer-comment" required rows="2" class="w-full text-xs p-2.5 rounded-xl border border-[#D4C3EF]/50 bg-white focus:outline-none focus:border-[#8E68D1]" placeholder="ความประทับใจ..."></textarea>
-  </div>
-  <div>
-    <label class="block text-xs font-medium text-stone-600 mb-1">อัปโหลดหลักฐานการซื้อขาย (แอดมินเห็นคนเดียว)</label>
-    <input type="file" id="reviewer-proof" accept="image/*" class="w-full text-xs text-stone-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-[#8E68D1]/10 file:text-[#8E68D1] hover:file:bg-[#8E68D1]/20">
-  </div>
-  <button type="submit" class="w-full py-2.5 bg-[#8E68D1] text-white text-xs font-bold rounded-xl shadow-md hover:bg-[#7a55bc] transition-all">ส่งรีวิว</button>
-</form>
 </div>
 
-<!-- แสดงรายการรีวิวที่อนุมัติแล้ว -->
-<div class="space-y-3 mb-6" id="approved-reviews-container">
-<div class="bg-white p-4 rounded-2xl shadow-sm border border-[#D4C3EF]/30">
-  <div class="flex justify-between items-center mb-1">
-    <span class="font-bold text-xs text-[#312A4A]">คุณมินิ (ลูกค้าประจำ)</span>
-    <span class="text-amber-500 text-xs">⭐⭐⭐⭐⭐</span>
-  </div>
-  <p class="text-xs text-stone-600">งานไวมากค่ะ คุมโทนสวยตรงใจมาก ไว้มาอุดหนุนอีกแน่นอนค่า ✨</p>
-</div>
+<!-- ปุ่มกดเขียนรีวิว (เปิดฟอร์มกรอกพร้อมอัปโหลดหลักฐานการซื้อขายให้แอดมินเห็นคนเดียว) -->
+<div class="mb-6 text-center">
+  <button onclick="openReviewModal()" class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-[#8E68D1] to-[#312A4A] text-white font-medium shadow-lg hover:opacity-95 transition-all flex items-center justify-center gap-2">
+    <i data-lucide="plus-circle" style="width:20px; height:20px;"></i>
+    เขียนรีวิว / ส่งหลักฐานการซื้อขาย
+  </button>
 </div>
 
-<!-- รูปแบนเนอร์ขนาด 1122*495 ข้างล่างรีวิว -->
-<div class="w-full rounded-2xl overflow-hidden shadow-md border border-[#D4C3EF]/40 bg-white mb-6 relative cursor-pointer" onclick="triggerImageEdit('banner-img')">
-<img id="banner-img" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1122&h=495&fit=crop" alt="Banner" style="aspect-ratio: 1122 / 495;" class="w-full object-cover"/>
+<!-- ช่องแสดงรีวิวที่อนุมัติแล้ว หรือข้อความ "ยังไม่มีรีวิว ร้านเปิดใหม่รอรีวิวจากลูกค้านะคะ" ถ้ายังไม่มีรีวิว -->
+<div id="reviews-container" class="space-y-4 relative z-10">
+  <div id="no-review-placeholder" class="bg-white rounded-[24px] p-8 text-center shadow-sm border border-[#D4C3EF]/20">
+    <div class="w-12 h-12 bg-pink-50 text-pink-400 rounded-full flex items-center justify-center mx-auto mb-3">
+      <i data-lucide="star" style="width:24px; height:24px; fill:currentColor;"></i>
+    </div>
+    <p class="text-stone-500 text-sm">ยังไม่มีรีวิว ร้านเปิดใหม่รอรีวิวจากลูกค้านะคะ</p>
+  </div>
+</div>
+
+<!-- ส่วนแบนเนอร์ขนาด 1122*495 ข้างล่างของ Customer Feedback / Shop Reviews -->
+<div class="mt-8 mb-6 rounded-2xl overflow-hidden shadow-md border border-[#D4C3EF]/30 bg-white">
+  <img src="IMG_6210.png" alt="Banner 1122x495" class="w-full h-auto object-cover banner-img" style="aspect-ratio: 1122 / 495;" />
 </div>
 
 </div>
 
 <!-- CONTACT -->
-<div id="content-CONTACT" class="hidden animate-fadeln flex flex-col items-center pb-8 relative">
+<div id="content-CONTACT" class="hidden animate-fadeIn flex flex-col items-center pb-8 relative">
 <div class="absolute top-10 right-4 text-[#D4C3EF] animate-float"><i data-lucide="message-circle" style="width:32px; height:32px;"></i></div>
 <div class="text-center mb-6 relative mt-4">
 <p class="text-[#E5DDF0] font-medium text-sm mb-1 drop-shadow-sm">Get in touch</p>
@@ -233,59 +250,118 @@ Contact
 </div>
 </div>
 
-<!-- Footer (ลบโลโก้ข้างล่างออกเรียบร้อย) -->
+<!-- Footer (ลบรูปโลโก้ข้างล่างออกตามเงื่อนไข) -->
 <div class="py-6 text-center text-xs text-[#8E68D1]/60 mt-auto bg-gradient-to-t from-[#D4C3EF]/20 to-transparent relative z-10">
 ©2024 Fumiko Poko. All rights reserved.
 </div>
 </div>
 
-<!-- Admin Panel Modal / Login Modal -->
-<div id="admin-modal" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
-<div class="bg-white rounded-3xl p-6 w-full max-w-sm shadow-2xl relative animate-fadeIn">
-<button onclick="closeAdminModal()" class="absolute top-4 right-4 text-stone-400 hover:text-stone-700">
-  <i data-lucide="x" style="width: 20px; height: 20px;"></i>
-</button>
-<div id="admin-login-view">
-  <h3 class="text-lg font-bold text-[#312A4A] mb-4 text-center">🔐 แอดมินเข้าสู่ระบบ</h3>
-  <form onsubmit="handleAdminLogin(event)" class="space-y-3">
-    <div>
-      <label class="block text-xs font-medium text-stone-600 mb-1">อีเมลแอดมิน</label>
-      <input type="email" id="admin-email" required class="w-full text-xs p-2.5 rounded-xl border border-stone-300 focus:outline-none focus:border-[#8E68D1]" placeholder="admin@email.com">
-    </div>
-    <div>
-      <label class="block text-xs font-medium text-stone-600 mb-1">รหัสผ่าน</label>
-      <input type="password" id="admin-password" required class="w-full text-xs p-2.5 rounded-xl border border-stone-300 focus:outline-none focus:border-[#8E68D1]" placeholder="••••••••">
-    </div>
-    <button type="submit" class="w-full py-2.5 bg-[#312A4A] text-white text-xs font-bold rounded-xl shadow-md hover:bg-[#251f38] transition-all">เข้าสู่ระบบ</button>
-  </form>
-</div>
-<div id="admin-dashboard-view" class="hidden space-y-4">
-  <h3 class="text-lg font-bold text-[#312A4A] text-center">⚙️ แอดมินแดชบอร์ด</h3>
-  <p class="text-xs text-stone-500 text-center">อนุมัติรีวิวและตรวจสอบสลิปหลักฐานการซื้อขาย</p>
-  <div id="admin-pending-reviews" class="space-y-2 max-h-60 overflow-y-auto pr-1">
-    <!-- รายการรออนุมัติจะแสดงตรงนี้ -->
+<!-- Modal เขียนรีวิวสำหรับลูกค้า -->
+<div id="review-modal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+  <div class="bg-white w-full max-w-sm rounded-3xl p-6 shadow-2xl animate-fadeIn relative">
+    <h3 class="text-lg font-bold text-[#312A4A] mb-4 flex items-center gap-2">
+      <i data-lucide="star" class="text-[#8E68D1]" style="width:20px; height:20px; fill:currentColor;"></i>
+      เขียนรีวิวร้านค้า
+    </h3>
+    <form id="review-form" onsubmit="submitReview(event)" class="space-y-4">
+      <div>
+        <label class="block text-xs font-semibold text-stone-600 mb-1">ชื่อของคุณ</label>
+        <input type="text" id="review-name" required class="w-full px-4 py-2 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-[#8E68D1]" placeholder="ชื่อเล่น หรือนามปากกา">
+      </div>
+      <div>
+        <label class="block text-xs font-semibold text-stone-600 mb-1">ให้คะแนนความพึงพอใจ</label>
+        <select id="review-rating" class="w-full px-4 py-2 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-[#8E68D1]">
+          <option value="5">⭐⭐⭐⭐⭐ (5 ดาว)</option>
+          <option value="4">⭐⭐⭐⭐ (4 ดาว)</option>
+          <option value="3">⭐⭐⭐ (3 ดาว)</option>
+          <option value="2">⭐⭐ (2 ดาว)</option>
+          <option value="1">⭐ (1 ดาว)</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-xs font-semibold text-stone-600 mb-1">ข้อความรีวิว</label>
+        <textarea id="review-comment" required rows="3" class="w-full px-4 py-2 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-[#8E68D1]" placeholder="ความประทับใจที่มีต่อร้าน..."></textarea>
+      </div>
+      <div>
+        <label class="block text-xs font-semibold text-stone-600 mb-1">อัปโหลดหลักฐานการซื้อขาย <span class="text-rose-500">(แอดมินเห็นคนเดียว)</span></label>
+        <input type="file" id="review-proof" accept="image/*" required class="w-full text-xs text-stone-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-[#8E68D1]/10 file:text-[#8E68D1] hover:file:bg-[#8E68D1]/20">
+      </div>
+      <div class="flex gap-2 pt-2">
+        <button type="button" onclick="closeReviewModal()" class="flex-1 py-2.5 rounded-xl border border-stone-300 text-stone-600 text-sm font-medium">ยกเลิก</button>
+        <button type="submit" class="flex-1 py-2.5 rounded-xl bg-[#8E68D1] text-white text-sm font-medium">ส่งรีวิว</button>
+      </div>
+    </form>
   </div>
-  <button onclick="logoutAdmin()" class="w-full py-2 bg-rose-500 text-white text-xs font-bold rounded-xl">ออกจากระบบ</button>
-</div>
-</div>
 </div>
 
-<!-- Hidden File Input สำหรับเปลี่ยนรูปทุกรูปในเว็บ -->
-<input type="file" id="global-image-picker" accept="image/*" class="hidden" onchange="handleImageChange(event)">
+<!-- Modal แอดมินล็อกอิน (ด้วยอีเมลและพาสเวิร์ด) และจัดการอนุมัติรีวิว/เปลี่ยนรูปภาพ -->
+<div id="admin-modal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+  <div class="bg-white w-full max-w-md rounded-3xl p-6 shadow-2xl animate-fadeIn relative max-h-[90vh] overflow-y-auto">
+    <div id="admin-login-view">
+      <h3 class="text-lg font-bold text-[#312A4A] mb-4 flex items-center gap-2">
+        <i data-lucide="shield-check" class="text-[#8E68D1]" style="width:20px; height:20px;"></i>
+        Admin Login
+      </h3>
+      <form onsubmit="adminLogin(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-stone-600 mb-1">อีเมลแอดมิน</label>
+          <input type="email" id="admin-email" required class="w-full px-4 py-2 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-[#8E68D1]" placeholder="admin@fumiko.com">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-stone-600 mb-1">รหัสผ่าน</label>
+          <input type="password" id="admin-pass" required class="w-full px-4 py-2 rounded-xl border border-stone-200 text-sm focus:outline-none focus:border-[#8E68D1]" placeholder="••••••••">
+        </div>
+        <div class="flex gap-2 pt-2">
+          <button type="button" onclick="closeAdminModal()" class="flex-1 py-2.5 rounded-xl border border-stone-300 text-stone-600 text-sm font-medium">ยกเลิก</button>
+          <button type="submit" class="flex-1 py-2.5 rounded-xl bg-[#312A4A] text-white text-sm font-medium">เข้าสู่ระบบ</button>
+        </div>
+      </form>
+    </div>
+
+    <div id="admin-dashboard-view" class="hidden space-y-6">
+      <div class="flex justify-between items-center border-b pb-3">
+        <h3 class="text-lg font-bold text-[#312A4A]">ระบบจัดการแอดมิน</h3>
+        <button onclick="adminLogout()" class="text-xs text-rose-500 font-semibold">ออกจากระบบ</button>
+      </div>
+
+      <!-- ส่วนเปลี่ยนรูปภาพทุกรูปในเว็บ -->
+      <div>
+        <h4 class="font-bold text-sm text-[#312A4A] mb-2 flex items-center gap-1.5"><i data-lucide="image" style="width:16px;height:16px;"></i> เปลี่ยนรูปภาพในเว็บไซต์</h4>
+        <div class="space-y-3 bg-[#FAFAFC] p-3 rounded-2xl border text-xs">
+          <div>
+            <label class="block font-medium text-stone-600 mb-1">เปลี่ยนรูปโปรไฟล์หลัก</label>
+            <input type="file" accept="image/*" onchange="changeImageSrc(event, 'img-profile')" class="w-full">
+          </div>
+          <div>
+            <label class="block font-medium text-stone-600 mb-1">เปลี่ยนรูปแบนเนอร์ (1122x495)</label>
+            <input type="file" accept="image/*" onchange="changeBannerImg(event)" class="w-full">
+          </div>
+        </div>
+      </div>
+
+      <!-- ส่วนอนุมัติรีวิว / ดูหลักฐานการซื้อขาย -->
+      <div>
+        <h4 class="font-bold text-sm text-[#312A4A] mb-2 flex items-center gap-1.5"><i data-lucide="check-circle" style="width:16px;height:16px;"></i> รายการรีวิวรออนุมัติ (มีหลักฐานซื้อขาย)</h4>
+        <div id="admin-pending-reviews" class="space-y-3">
+          <p class="text-xs text-stone-400">ยังไม่มีรีวิวใหม่รอตรวจสอบ</p>
+        </div>
+      </div>
+
+      <button onclick="closeAdminModal()" class="w-full py-2.5 rounded-xl bg-stone-200 text-stone-700 text-sm font-medium">ปิดหน้าต่าง</button>
+    </div>
+  </div>
+</div>
 
 <!-- Application Logic -->
 <script>
+// Initialize Lucide Icons
 lucide.createIcons();
 
-const tabs = ['HOME', 'REVIEWS', 'CONTACT'];
-let currentEditingImgId = null;
-let isAdminLoggedIn = false;
-let pendingReviews = [];
-
+const tabs = ['HOME', 'T.O.S', 'REVIEWS', 'CONTACT'];
 function switchTab(tabId) {
   tabs.forEach(t => {
-    const el = document.getElementById('content-' + t);
-    if(el) el.classList.add('hidden');
+    const content = document.getElementById('content-' + t);
+    if(content) content.classList.add('hidden');
   });
   const target = document.getElementById('content-' + tabId);
   if(target) target.classList.remove('hidden');
@@ -318,155 +394,167 @@ function toggleMenu() {
 
 function closeMenu() {
   const menu = document.getElementById('mobile-menu');
-  if(menu) menu.classList.add('hidden');
   const iconMenu = document.getElementById('icon-menu');
-  if(iconMenu) iconMenu.classList.remove('hidden');
   const iconX = document.getElementById('icon-x');
+  if(menu) menu.classList.add('hidden');
+  if(iconMenu) iconMenu.classList.remove('hidden');
   if(iconX) iconX.classList.add('hidden');
 }
 
-// Admin Login Functions
-function openAdminLogin() {
-  document.getElementById('admin-modal').classList.remove('hidden');
-  if (isAdminLoggedIn) {
-    document.getElementById('admin-login-view').classList.add('hidden');
-    document.getElementById('admin-dashboard-view').classList.remove('hidden');
-    renderAdminPendingReviews();
-  } else {
-    document.getElementById('admin-login-view').classList.remove('hidden');
-    document.getElementById('admin-dashboard-view').classList.add('hidden');
-  }
-  lucide.createIcons();
+// Review System Data & Functions
+let reviewsData = [];
+
+function openReviewModal() {
+  document.getElementById('review-modal').classList.remove('hidden');
+}
+function closeReviewModal() {
+  document.getElementById('review-modal').classList.add('hidden');
 }
 
-function closeAdminModal() {
-  document.getElementById('admin-modal').classList.add('hidden');
-}
-
-function handleAdminLogin(e) {
-  e.preventDefault();
-  isAdminLoggedIn = true;
-  document.getElementById('admin-login-view').classList.add('hidden');
-  document.getElementById('admin-dashboard-view').classList.remove('hidden');
-  renderAdminPendingReviews();
-  alert('เข้าสู่ระบบแอดมินสำเร็จ! ตอนนี้คุณสามารถคลิกที่รูปภาพใดก็ได้เพื่อเปลี่ยนรูป และตรวจสอบรีวิวได้');
-}
-
-function logoutAdmin() {
-  isAdminLoggedIn = false;
-  closeAdminModal();
-}
-
-// Image Editor Functions (แอดมินเปลี่ยนรูปภาพได้ทุกรูป)
-function triggerImageEdit(imgId) {
-  if (!isAdminLoggedIn) {
-    alert('กรุณาล็อกอินเป็นแอดมินที่มุมบนขวาก่อน จึงจะสามารถเปลี่ยนรูปภาพได้');
-    return;
-  }
-  currentEditingImgId = imgId;
-  document.getElementById('global-image-picker').click();
-}
-
-function handleImageChange(event) {
-  const file = event.target.files[0];
-  if (file && currentEditingImgId) {
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      const imgEl = document.getElementById(currentEditingImgId);
-      if (imgEl) {
-        imgEl.src = e.target.result;
-        alert('เปลี่ยนรูปภาพเรียบร้อยแล้ว!');
-      }
-    };
-    reader.readAsDataURL(file);
-  }
-  event.target.value = '';
-}
-
-// Review System Functions
 function submitReview(e) {
   e.preventDefault();
-  const name = document.getElementById('reviewer-name').value;
-  const rating = document.getElementById('reviewer-rating').value;
-  const comment = document.getElementById('reviewer-comment').value;
-  const proofFile = document.getElementById('reviewer-proof').files[0];
+  const name = document.getElementById('review-name').value;
+  const rating = parseInt(document.getElementById('review-rating').value);
+  const comment = document.getElementById('review-comment').value;
+  const proofFile = document.getElementById('review-proof').files[0];
 
-  let proofDataUrl = '';
-  const proceedSave = (url) => {
-    pendingReviews.push({
+  const reader = new FileReader();
+  reader.onload = function(uploadEvent) {
+    const newReview = {
       id: Date.now(),
       name,
       rating,
       comment,
-      proof: url
-    });
-    alert('ส่งรีวิวเรียบร้อยแล้ว! รอแอดมินตรวจสอบและอนุมัติ');
-    document.getElementById('review-form').reset();
-    if (isAdminLoggedIn) renderAdminPendingReviews();
-  };
-
-  if (proofFile) {
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      proceedSave(e.target.result);
+      proof: uploadEvent.target.result,
+      approved: false
     };
+    reviewsData.push(newReview);
+    alert('ส่งรีวิวเรียบร้อยแล้ว! รอแอดมินตรวจสอบและอนุมัติการแสดงผล');
+    document.getElementById('review-form').reset();
+    closeReviewModal();
+    renderAdminReviews();
+  };
+  if(proofFile) {
     reader.readAsDataURL(proofFile);
-  } else {
-    proceedSave('');
   }
 }
 
-function renderAdminPendingReviews() {
+function renderReviews() {
+  const container = document.getElementById('reviews-container');
+  const approvedReviews = reviewsData.filter(r => r.approved);
+  
+  if(approvedReviews.length === 0) {
+    container.innerHTML = `
+      <div class="bg-white rounded-[24px] p-8 text-center shadow-sm border border-[#D4C3EF]/20">
+        <div class="w-12 h-12 bg-pink-50 text-pink-400 rounded-full flex items-center justify-center mx-auto mb-3">
+          <i data-lucide="star" style="width:24px; height:24px; fill:currentColor;"></i>
+        </div>
+        <p class="text-stone-500 text-sm">ยังไม่มีรีวิว ร้านเปิดใหม่รอรีวิวจากลูกค้านะคะ</p>
+      </div>`;
+    document.getElementById('review-total-count').innerText = "88 คน";
+    document.getElementById('review-score-avg').innerText = "4.8 ดาว";
+  } else {
+    container.innerHTML = approvedReviews.map(r => `
+      <div class="bg-white rounded-[20px] p-4 shadow-sm border border-[#D4C3EF]/30 space-y-2">
+        <div class="flex justify-between items-center">
+          <span class="font-bold text-sm text-[#312A4A]">${r.name}</span>
+          <div class="flex text-amber-400 text-xs">
+            ${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}
+          </div>
+        </div>
+        <p class="text-xs text-stone-600">${r.comment}</p>
+      </div>
+    `).join('');
+    document.getElementById('review-total-count').innerText = (88 + approvedReviews.length) + " คน";
+    document.getElementById('review-score-avg').innerText = "4.9 ดาว";
+  }
+  lucide.createIcons();
+}
+
+// Admin Modal & Dashboard Functions
+function openAdminLogin() {
+  document.getElementById('admin-modal').classList.remove('hidden');
+}
+function closeAdminModal() {
+  document.getElementById('admin-modal').classList.add('hidden');
+}
+
+function adminLogin(e) {
+  e.preventDefault();
+  const email = document.getElementById('admin-email').value;
+  const pass = document.getElementById('admin-pass').value;
+  // จำลองการตรวจสอบสิทธิ์แอดมิน
+  if(email && pass) {
+    document.getElementById('admin-login-view').classList.add('hidden');
+    document.getElementById('admin-dashboard-view').classList.remove('hidden');
+    renderAdminReviews();
+  }
+}
+
+function adminLogout() {
+  document.getElementById('admin-dashboard-view').classList.add('hidden');
+  document.getElementById('admin-login-view').classList.remove('hidden');
+}
+
+function renderAdminReviews() {
   const container = document.getElementById('admin-pending-reviews');
-  if (!container) return;
-  if (pendingReviews.length === 0) {
-    container.innerHTML = `<p class="text-xs text-stone-400 text-center py-4">ไม่มีรีวิวรออนุมัติในขณะนี้</p>`;
+  if(reviewsData.length === 0) {
+    container.innerHTML = `<p class="text-xs text-stone-400">ยังไม่มีรีวิวใหม่รอตรวจสอบ</p>`;
     return;
   }
-  container.innerHTML = pendingReviews.map(rev => `
-    <div class="bg-stone-50 p-3 rounded-xl border border-stone-200 text-xs space-y-1">
-      <div class="font-bold text-[#312A4A]">${rev.name} (${'⭐'.repeat(rev.rating)})</div>
-      <p class="text-stone-600">${rev.comment}</p>
-      ${rev.proof ? `<a href="${rev.proof}" target="_blank" class="text-blue-600 underline block">🔍 ดูสลิปหลักฐาน (แอดมินเห็นคนเดียว)</a>` : '<span class="text-stone-400">ไม่มีสลิปแนบ</span>'}
-      <div class="flex gap-2 pt-2">
-        <button onclick="approveReview(${rev.id})" class="px-3 py-1 bg-emerald-500 text-white rounded-lg font-bold">อนุมัติ</button>
-        <button onclick="deleteReview(${rev.id})" class="px-3 py-1 bg-rose-500 text-white rounded-lg">ลบ</button>
+  container.innerHTML = reviewsData.map(r => `
+    <div class="p-3 bg-white rounded-xl border border-stone-200 text-xs space-y-2">
+      <div class="flex justify-between">
+        <span class="font-bold text-[#312A4A]">${r.name} (${r.rating} ดาว)</span>
+        <span class="${r.approved ? 'text-emerald-500 font-semibold' : 'text-amber-500'}">${r.approved ? 'อนุมัติแล้ว' : 'รอตรวจสอบ'}</span>
       </div>
+      <p class="text-stone-600">${r.comment}</p>
+      <div>
+        <p class="font-medium text-stone-500 mb-1">หลักฐานการซื้อขาย (แอดมินเห็นคนเดียว):</p>
+        <a href="${r.proof}" target="_blank">
+          <img src="${r.proof}" class="w-20 h-20 object-cover rounded-lg border hover:opacity-90"/>
+        </a>
+      </div>
+      ${!r.approved ? `<button onclick="approveReview(${r.id})" class="w-full py-1.5 bg-emerald-500 text-white rounded-lg font-medium text-xs mt-1">อนุมัติให้แสดงรีวิว</button>` : ''}
     </div>
   `).join('');
+  lucide.createIcons();
 }
 
 function approveReview(id) {
-  const idx = pendingReviews.findIndex(r => r.id === id);
-  if (idx !== -1) {
-    const rev = pendingReviews.splice(idx, 1)[0];
-    const container = document.getElementById('approved-reviews-container');
-    const stars = '⭐'.repeat(rev.rating);
-    const newDiv = document.createElement('div');
-    newDiv.className = "bg-white p-4 rounded-2xl shadow-sm border border-[#D4C3EF]/30 animate-fadeIn";
-    newDiv.innerHTML = `
-      <div class="flex justify-between items-center mb-1">
-        <span class="font-bold text-xs text-[#312A4A]">${rev.name}</span>
-        <span class="text-amber-500 text-xs">${stars}</span>
-      </div>
-      <p class="text-xs text-stone-600">${rev.comment}</p>
-    `;
-    container.prepend(newDiv);
-    
-    // อัปเดตจำนวนคนรีวิว
-    const countEl = document.getElementById('total-reviews-count');
-    if (countEl) {
-      countEl.innerText = parseInt(countEl.innerText) + 1;
-    }
-
-    renderAdminPendingReviews();
-    alert('อนุมัติรีวิวและแสดงผลเรียบร้อยแล้ว!');
+  const rev = reviewsData.find(r => r.id === id);
+  if(rev) {
+    rev.approved = true;
+    renderAdminReviews();
+    renderReviews();
+    alert('อนุมัติรีวิวเรียบร้อยแล้ว รีวิวจะแสดงบนหน้าเว็บทันที');
   }
 }
 
-function deleteReview(id) {
-  pendingReviews = pendingReviews.filter(r => r.id !== id);
-  renderAdminPendingReviews();
+// ฟังก์ชันเปลี่ยนรูปภาพในเว็บ (โปรไฟล์ / แบนเนอร์)
+function changeImageSrc(event, elementId) {
+  const file = event.target.files[0];
+  if(file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById(elementId).src = e.target.result;
+      alert('เปลี่ยนรูปภาพสำเร็จ!');
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+function changeBannerImg(event) {
+  const file = event.target.files[0];
+  if(file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const banners = document.querySelectorAll('.banner-img');
+      banners.forEach(b => b.src = e.target.result);
+      alert('เปลี่ยนรูปแบนเนอร์สำเร็จ!');
+    };
+    reader.readAsDataURL(file);
+  }
 }
 </script>
 </body>
