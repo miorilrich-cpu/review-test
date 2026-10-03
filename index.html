@@ -42,6 +42,18 @@ body {
 .animate-float-delayed {
   animation: float-delayed 3.5s ease-in-out infinite 1s;
 }
+/* ปรับเลย์เอาต์หัวข้อ Shop Reviews ให้ขยับซ้ายและเผื่อพื้นที่ขวาสำหรับโลโก้ตามต้องการ */
+.review-header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left !important;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+.banner-aspect-ratio {
+  aspect-ratio: 1122 / 495;
+}
 </style>
 </head>
 <body class="min-h-screen bg-[#E5DDF0] text-stone-800 flex justify-center selection:bg-[#D4C3EF]">
@@ -58,7 +70,7 @@ body {
   <div class="absolute top-[22%] left-[18%] text-[#312A4A]/20 animate-float" style="animation-duration: 4s;"><i data-lucide="moon" style="width:24px; height:24px; fill:currentColor;"></i></div>
   <div class="absolute top-[32%] right-[8%] text-[#8E68D1]/30 animate-float-delayed"><i data-lucide="star" style="width: 14px; height: 14px; fill: currentColor;"></i></div>
 
-  <!-- Hamburger Menu Icon -->
+  <!-- Header & Badges (คงไว้ 100%) -->
   <div class="absolute top-6 right-6 z-50 flex items-center gap-2">
     <!-- Admin Status Badge / Login Button -->
     <button onclick="toggleAdminModal()" id="admin-badge-btn" class="px-3 py-1.5 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-xl border border-white/20 text-white text-xs font-medium transition-all flex items-center gap-1.5">
@@ -76,11 +88,10 @@ body {
     <div class="absolute top-20 right-6 w-48 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/50 overflow-hidden z-50 animate-fadeIn">
       <div class="flex flex-col py-2">
         <button id="btn-HOME" onclick="switchTab('HOME')" class="px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 bg-[#8E68D1]/10 text-[#8E68D1] border-l-4 border-[#8E68D1]">Home</button>
-        <button id="btn-REVIEW" onclick="switchTab('REVIEW')" class="px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 text-stone-600 hover:bg-[#F7F4FB] hover:text-[#8E68D1] border-l-4 border-transparent">Review</button>
         <button id="btn-ORDERING" onclick="switchTab('ORDERING')" class="px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 text-stone-600 hover:bg-[#F7F4FB] hover:text-[#8E68D1] border-l-4 border-transparent">Ordering</button>
         <button id="btn-EXAMPLE" onclick="switchTab('EXAMPLE')" class="px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 text-stone-600 hover:bg-[#F7F4FB] hover:text-[#8E68D1] border-l-4 border-transparent">Example</button>
         <button id="btn-PRICE" onclick="switchTab('PRICE')" class="px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 text-stone-600 hover:bg-[#F7F4FB] hover:text-[#8E68D1] border-l-4 border-transparent">Price</button>
-        <button id="btn-CONTACT" onclick="switchTab('CONTACT')" class="px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 text-stone-600 hover:bg-[#F7F4FB] hover:text-[#8E68D1] border-l-4 border-transparent">Contact</button>
+        <button id="btn-REVIEW" onclick="switchTab('REVIEW')" class="px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 text-stone-600 hover:bg-[#F7F4FB] hover:text-[#8E68D1] border-l-4 border-transparent">Review</button>
       </div>
     </div>
   </div>
@@ -95,7 +106,7 @@ body {
     <div id="content-HOME" class="flex flex-col items-center text-center animate-fadeIn relative mt-6">
       <div class="absolute top-0 right-4 text-[#D4C3EF] animate-float"><i data-lucide="sparkles" style="width:24px; height:24px;"></i></div>
       
-      <!-- Editable Profile Image -->
+      <!-- Profile Image (Admin can change) -->
       <div class="relative group">
         <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-full border-[6px] border-white shadow-[0_8px_30px_rgba(49,42,74,0.15)] mb-8 overflow-hidden bg-white flex items-center justify-center relative z-10">
           <img id="profile-img-tag" src="IMG_6210.png" alt="Profile" class="w-full h-full object-cover"/>
@@ -112,10 +123,13 @@ body {
         </p>
       </div>
       <div class="w-8 h-[2px] bg-[#D4C3EF] rounded-full my-4 relative z-10"></div>
+      
+      <!-- Status Bar (คงไว้ 100%) -->
       <div class="text-[#312A4A]/80 text-[10px] sm:text-xs font-semibold tracking-widest uppercase space-y-2 relative z-10 mb-8">
         <p>Status: Open for this month</p>
         <p class="text-[#8E68D1]">(Applications are accepted in rounds)</p>
       </div>
+      
       <div class="text-stone-500 text-[11px] font-medium leading-relaxed relative z-10 flex flex-col items-center gap-1 mb-8">
         <span>Welcome to Fumiko Poko</span>
         <span class="flex items-center gap-1.5">Thank you for supporting! <i data-lucide="sparkles" class="text-[#8E68D1]" style="width: 12px; height: 12px;"></i></span>
@@ -127,20 +141,90 @@ body {
       </div>
     </div>
 
-    <!-- REVIEW (เปลี่ยนจาก T.O.S เป็นหน้ารีวิว) -->
+    <!-- ORDERING -->
+    <div id="content-ORDERING" class="hidden animate-fadeIn space-y-4">
+      <div class="text-center mb-6">
+        <h2 class="text-xl font-bold text-[#312A4A]">Ordering Steps</h2>
+        <p class="text-xs text-stone-500">ขั้นตอนการสั่งซื้อคอมมิชชั่น</p>
+      </div>
+      <div class="space-y-3">
+        <div class="bg-white p-4 rounded-2xl border border-[#D4C3EF]/40 shadow-sm flex items-start gap-3">
+          <div class="w-7 h-7 rounded-full bg-[#8E68D1] text-white flex items-center justify-center font-bold text-xs shrink-0">1</div>
+          <div><h4 class="font-bold text-xs text-[#312A4A]">ส่งบรีฟงาน</h4><p class="text-[11px] text-stone-500">แจ้งรายละเอียด ตัวละคร โพสต์ และโทนสีที่ต้องการ</p></div>
+        </div>
+        <div class="bg-white p-4 rounded-2xl border border-[#D4C3EF]/40 shadow-sm flex items-start gap-3">
+          <div class="w-7 h-7 rounded-full bg-[#8E68D1] text-white flex items-center justify-center font-bold text-xs shrink-0">2</div>
+          <div><h4 class="font-bold text-xs text-[#312A4A]">สรุปราคาและคิว</h4><p class="text-[11px] text-stone-500">แอดมินประเมินราคาและแจ้งคิวงานให้ทราบ</p></div>
+        </div>
+        <div class="bg-white p-4 rounded-2xl border border-[#D4C3EF]/40 shadow-sm flex items-start gap-3">
+          <div class="w-7 h-7 rounded-full bg-[#8E68D1] text-white flex items-center justify-center font-bold text-xs shrink-0">3</div>
+          <div><h4 class="font-bold text-xs text-[#312A4A]">ชำระเงิน</h4><p class="text-[11px] text-stone-500">โอนเงินมัดจำหรือเต็มจำนวนเพื่อเริ่มงาน</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXAMPLE -->
+    <div id="content-EXAMPLE" class="hidden animate-fadeIn space-y-4">
+      <div class="text-center mb-6">
+        <h2 class="text-xl font-bold text-[#312A4A]">Portfolio Examples</h2>
+        <p class="text-xs text-stone-500">ตัวอย่างผลงานที่ผ่านมา</p>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <div class="relative group rounded-2xl overflow-hidden aspect-square bg-white border border-[#D4C3EF]/40 shadow-sm">
+          <img id="ex-img-1" src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover" alt="Example 1"/>
+          <button onclick="promptEditSpecificImage('ex-img-1')" class="admin-only hidden absolute bottom-2 right-2 p-1.5 bg-[#8E68D1] text-white rounded-lg text-[10px]">เปลี่ยนรูป</button>
+        </div>
+        <div class="relative group rounded-2xl overflow-hidden aspect-square bg-white border border-[#D4C3EF]/40 shadow-sm">
+          <img id="ex-img-2" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover" alt="Example 2"/>
+          <button onclick="promptEditSpecificImage('ex-img-2')" class="admin-only hidden absolute bottom-2 right-2 p-1.5 bg-[#8E68D1] text-white rounded-lg text-[10px]">เปลี่ยนรูป</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRICE -->
+    <div id="content-PRICE" class="hidden animate-fadeIn space-y-4">
+      <div class="text-center mb-6">
+        <h2 class="text-xl font-bold text-[#312A4A]">Price List</h2>
+        <p class="text-xs text-stone-500">เรทราคาค่าคอมมิชชั่น</p>
+      </div>
+      <div class="space-y-3">
+        <div class="bg-white p-4 rounded-2xl border border-[#D4C3EF]/40 shadow-sm flex justify-between items-center">
+          <div><h4 class="font-bold text-xs text-[#312A4A]">Headshot / ครึ่งตัวบน</h4><p class="text-[10px] text-stone-400">รายละเอียดคมชัด</p></div>
+          <span class="text-sm font-extrabold text-[#8E68D1]">350 ฿</span>
+        </div>
+        <div class="bg-white p-4 rounded-2xl border border-[#D4C3EF]/40 shadow-sm flex justify-between items-center">
+          <div><h4 class="font-bold text-xs text-[#312A4A]">Full Body / เต็มตัว</h4><p class="text-[10px] text-stone-400">จัดเต็มทุกสัดส่วน</p></div>
+          <span class="text-sm font-extrabold text-[#8E68D1]">600 ฿</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- REVIEW (ปรับปรุงหัวข้อขยับซ้าย, เผื่อที่ใส่โลโก้ขวา, ขนาดแบนเนอร์ 1122*495, ซ่อนช่องรีวิวในโหมดแอดมิน) -->
     <div id="content-REVIEW" class="hidden animate-fadeIn space-y-6">
-      <div class="text-center mb-4 relative mt-4">
-        <p class="text-[#E5DDF0] font-medium text-sm mb-1 drop-shadow-sm">Customer Feedback</p>
-        <h2 class="text-2xl font-bold text-[#F7F4FB] flex items-center justify-center gap-2 drop-shadow-md">
-          <i data-lucide="star" class="text-[#D4C3EF]" style="width: 18px; height: 18px; fill:currentColor;"></i>
-          Shop Reviews
-          <i data-lucide="star" class="text-[#D4C3EF]" style="width: 18px; height: 18px; fill:currentColor;"></i>
-        </h2>
+      
+      <!-- หัวข้อ Customer Feedback และ Shop Reviews ขยับซ้าย + พื้นที่โลโก้ขวา -->
+      <div class="review-header-container mb-2 relative mt-4">
+        <div>
+          <p class="text-[#312A4A] font-medium text-xs mb-0.5 tracking-wide">Customer Feedback</p>
+          <h2 class="text-xl font-bold text-[#312A4A] flex items-center gap-1.5">
+            <i data-lucide="star" class="text-[#8E68D1]" style="width: 16px; height: 16px; fill:currentColor;"></i>
+            Shop Reviews
+          </h2>
+        </div>
+        <!-- โลโก้ทางขวา (แอดมินสามารถเปลี่ยนรูปโลโก้ได้) -->
+        <div class="relative group">
+          <div class="w-12 h-12 rounded-full border-2 border-white shadow-md overflow-hidden bg-white flex items-center justify-center">
+            <img id="shop-logo-img" src="IMG_6210.png" alt="Shop Logo" class="w-full h-full object-cover"/>
+          </div>
+          <button onclick="promptEditImage('logo')" class="admin-only hidden absolute -bottom-1 -right-1 p-1 bg-[#8E68D1] text-white rounded-full text-[9px] shadow" title="เปลี่ยนโลโก้">
+            <i data-lucide="camera" style="width: 10px; height: 10px;"></i>
+          </button>
+        </div>
       </div>
 
-      <!-- Banner รูปแบนเนอร์ด้านบนช่องรีวิว -->
-      <div class="relative rounded-[24px] overflow-hidden shadow-lg border border-[#D4C3EF]/40 group">
-        <img id="review-banner-img" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop" alt="Review Banner" class="w-full h-36 object-cover brightness-95"/>
+      <!-- Banner รูปแบนเนอร์ขนาดสัดส่วน 1122*495 -->
+      <div class="relative rounded-[24px] overflow-hidden shadow-lg border border-[#D4C3EF]/40 group banner-aspect-ratio">
+        <img id="review-banner-img" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1122&auto=format&fit=crop" alt="Review Banner" class="w-full h-full object-cover brightness-95"/>
         <div class="absolute inset-0 bg-gradient-to-t from-[#312A4A]/70 via-transparent to-transparent flex items-end p-4">
           <div class="text-white">
             <p class="text-xs font-bold tracking-wider text-[#D4C3EF] uppercase">Fumiko Poko Gallery</p>
@@ -149,11 +233,11 @@ body {
         </div>
         <!-- Admin Edit Banner Button -->
         <button onclick="promptEditBanner()" class="admin-only hidden absolute top-3 right-3 p-2 bg-black/60 backdrop-blur-md text-white rounded-xl text-xs hover:bg-black/80 transition-colors flex items-center gap-1">
-          <i data-lucide="image" style="width: 14px; height: 14px;"></i> เปลี่ยนแบนเนอร์
+          <i data-lucide="image" style="width: 14px; height: 14px;"></i> เปลี่ยนแบนเนอร์ (1122*495)
         </button>
       </div>
 
-      <!-- Stats Card (คะแนนรวม & จำนวนคนรีวิว) -->
+      <!-- Stats Card -->
       <div class="bg-white rounded-[24px] p-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[#D4C3EF]/40 flex items-center justify-around text-center">
         <div>
           <p class="text-2xl font-extrabold text-[#312A4A]" id="avg-rating-text">4.9</p>
@@ -174,8 +258,8 @@ body {
         </div>
       </div>
 
-      <!-- Review Form Card (ฟอร์มเขียนรีวิว + อัปโหลดหลักฐาน) -->
-      <div class="bg-[#F7F4FB] rounded-[24px] p-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[#D4C3EF]/40">
+      <!-- Review Form Card (ถูกซ่อนอัตโนมัติในโหมดแอดมิน เพื่อป้องกันการโกงเพิ่มยอดรีวิวเอง) -->
+      <div id="customer-review-form-section" class="bg-[#F7F4FB] rounded-[24px] p-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[#D4C3EF]/40">
         <h3 class="font-bold text-[#312A4A] text-sm mb-3 flex items-center gap-2">
           <i data-lucide="message-square-plus" class="text-[#8E68D1]" style="width: 18px; height: 18px;"></i> เขียนรีวิวให้ร้านค้า
         </h3>
@@ -223,106 +307,6 @@ body {
 
     </div>
 
-    <!-- ORDERING -->
-    <div id="content-ORDERING" class="hidden animate-fadeIn space-y-6 relative">
-      <div class="text-center mb-6 relative mt-4">
-        <p class="text-[#E5DDF0] font-medium text-sm mb-1 drop-shadow-sm">Step by step</p>
-        <h2 class="text-2xl font-bold text-[#F7F4FB] flex items-center justify-center gap-2 drop-shadow-md">
-          <i data-lucide="star" class="text-[#D4C3EF]" style="width: 18px; height: 18px; fill:currentColor;"></i>
-          How To Order
-          <i data-lucide="star" class="text-[#D4C3EF]" style="width: 18px; height: 18px; fill:currentColor;"></i>
-        </h2>
-      </div>
-      <div class="bg-white rounded-[24px] p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative z-10 border border-[#F7F4FB]">
-        <div class="flex items-center gap-2 mb-4 pb-2 border-b border-[#F7F4FB]">
-          <div class="bg-[#D4C3EF]/30 p-1.5 rounded-lg text-[#8E68D1]"><i data-lucide="sparkles" style="width: 16px; height: 16px;"></i></div>
-          <h3 class="font-bold text-[#312A4A]">กรณีสั่งงานป้าย / งานออกแบบ</h3>
-        </div>
-        <ol class="space-y-3 list-decimal list-inside text-sm text-stone-600 pl-2">
-          <li>เลือกแนวงาน ดูโทนสี</li>
-          <li>เลือกหัวป้าย <span class="text-[#8E68D1]/60 text-xs">(บางงานไม่สามารถเลือกได้)</span></li>
-          <li>บรีฟรายละเอียดที่จะใส่ในงาน</li>
-          <li>รอ confirm บรีฟ ก่อนโอนเงิน</li>
-          <li>ทางร้านจะส่งลิ้งค์ Check Q ให้</li>
-        </ol>
-      </div>
-      <div class="bg-white rounded-[24px] p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative z-10 border border-[#F7F4FB]">
-        <div class="flex items-center gap-2 mb-4 pb-2 border-b border-[#F7F4FB]">
-          <div class="bg-[#D4C3EF]/30 p-1.5 rounded-lg text-[#8E68D1]"><i data-lucide="check" style="width: 16px; height: 16px;"></i></div>
-          <h3 class="font-bold text-[#312A4A]">กรณีสั่งงานบล็อก / ร่างบล็อก</h3>
-        </div>
-        <ol class="space-y-3 list-decimal list-inside text-sm text-stone-600 pl-2">
-          <li>ขนาดของงาน เช่น ปกเฟส (1220x510)</li>
-          <li>บรีฟองค์ประกอบที่ต้องการใส่ในงาน เช่น Qr</li>
-          <li>หากรับภาพแต่ง แจ้งรายละเอียดเหมือนสั่งป้าย</li>
-        </ol>
-      </div>
-    </div>
-
-    <!-- EXAMPLE -->
-    <div id="content-EXAMPLE" class="hidden animate-fadeIn">
-      <div class="text-center mb-6 relative mt-4">
-        <p class="text-[#E5DDF0] font-medium text-sm mb-1 drop-shadow-sm">Portfolios</p>
-        <h2 class="text-2xl font-bold text-[#F7F4FB] flex items-center justify-center gap-2 drop-shadow-md">
-          <i data-lucide="star" class="text-[#D4C3EF]" style="width: 18px; height: 18px; fill:currentColor;"></i>
-          Example
-          <i data-lucide="star" class="text-[#D4C3EF]" style="width: 18px; height: 18px; fill:currentColor;"></i>
-        </h2>
-      </div>
-      <p class="text-center text-sm text-[#E5DDF0] mb-6 drop-shadow-sm">คลิกเพื่อดูตัวอย่างงานในแฟ้มผลงาน</p>
-      <div class="grid grid-cols-1 gap-4 relative z-10">
-        <a href="https://drive.google.com/drive/folders/1-2hTMdBqNtQu01wz9142MaHVjOGk6JgB" target="_blank" rel="noopener noreferrer" class="bg-white rounded-[24px] p-5 shadow-[0_4px_20px_rgb(0,0,0,0.03)] flex items-center gap-4 hover:-translate-y-1 transition-transform group border border-transparent hover:border-[#D4C3EF]/50">
-          <div class="w-12 h-12 bg-[#F7F4FB] rounded-2xl flex items-center justify-center text-[#8E68D1] group-hover:bg-[#8E68D1] group-hover:text-white transition-colors">
-            <i data-lucide="link" style="width: 20px; height: 20px;"></i>
-          </div>
-          <div>
-            <h4 class="font-bold text-[#312A4A]">Sign work</h4>
-            <p class="text-xs text-stone-500">ตัวอย่างงานป้าย</p>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <!-- PRICE -->
-    <div id="content-PRICE" class="hidden animate-fadeIn pb-4">
-      <div class="text-center mb-6 relative mt-4">
-        <p class="text-[#E5DDF0] font-medium text-sm mb-1 drop-shadow-sm">Service Rates</p>
-        <h2 class="text-2xl font-bold text-[#F7F4FB] flex items-center justify-center gap-2 drop-shadow-md">
-          <i data-lucide="star" class="text-[#D4C3EF]" style="width: 18px; height: 18px; fill:currentColor;"></i>
-          Price
-          <i data-lucide="star" class="text-[#D4C3EF]" style="width: 18px; height: 18px; fill:currentColor;"></i>
-        </h2>
-      </div>
-      <div class="bg-white rounded-[32px] p-6 shadow-[0_8px_30px_rgba(142,104,209,0.12)] relative mt-6 border border-[#D4C3EF]/20">
-        <h3 class="text-lg font-bold text-center text-[#312A4A] mt-2 mb-1">งานป้าย</h3>
-        <p class="text-center text-xs text-stone-400 mb-4">สวยปัง คุมโทน น่ารักแน่นอน</p>
-        <div class="bg-[#F7F4FB] border border-[#D4C3EF]/30 rounded-2xl p-4">
-          <div class="flex justify-between items-center mb-3">
-            <span class="text-[#8E68D1] font-medium text-sm">เริ่มต้น</span>
-            <span class="text-xl font-bold text-[#8E68D1]">79.-</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CONTACT -->
-    <div id="content-CONTACT" class="hidden animate-fadeIn flex flex-col items-center pb-8 relative">
-      <div class="text-center mb-6 relative mt-4">
-        <p class="text-[#E5DDF0] font-medium text-sm mb-1 drop-shadow-sm">Get in touch</p>
-        <h2 class="text-2xl font-bold text-[#F7F4FB] flex items-center justify-center gap-2 drop-shadow-md">
-          <i data-lucide="star" class="text-[#D4C3EF]" style="width: 18px; height: 18px; fill:currentColor;"></i>
-          Contact
-          <i data-lucide="star" class="text-[#D4C3EF]" style="width: 18px; height: 18px; fill:currentColor;"></i>
-        </h2>
-      </div>
-      <div class="w-full space-y-4 relative z-10">
-        <a href="https://www.facebook.com/fumiko.poko?" target="_blank" rel="noopener noreferrer" class="flex items-center p-4 rounded-[24px] bg-white shadow-[0_4px_20px_rgb(0,0,0,0.03)] border border-transparent hover:border-[#D4C3EF] transition-all group">
-          <div class="bg-[#312A4A]/10 text-[#312A4A] p-3 rounded-2xl mr-4"><i data-lucide="facebook" style="width:24px; height:24px;"></i></div>
-          <div class="flex-grow"><p class="font-bold text-[#312A4A] text-lg">Facebook</p><p class="text-sm text-stone-500">Fumiko Poko</p></div>
-        </a>
-      </div>
-    </div>
-
   </div>
 
   <!-- Footer -->
@@ -367,7 +351,7 @@ body {
 // Initialize Lucide Icons
 lucide.createIcons();
 
-const tabs = ['HOME', 'REVIEW', 'ORDERING', 'EXAMPLE', 'PRICE', 'CONTACT'];
+const tabs = ['HOME', 'ORDERING', 'EXAMPLE', 'PRICE', 'REVIEW'];
 let isAdmin = false;
 
 // Mock Reviews Data
@@ -452,7 +436,6 @@ function renderReviews() {
       starsHtml += `<i data-lucide="star" style="width: 12px; height: 12px; ${i < r.rating ? 'fill:currentColor;' : 'fill:none; color:#d1d5db;'}"></i>`;
     }
 
-    // ส่วนแสดงหลักฐาน (โชว์เฉพาะแอดมินเห็นคนเดียว)
     let proofHtml = '';
     if(r.proof) {
       proofHtml = `
@@ -487,7 +470,6 @@ function renderReviews() {
 
   container.innerHTML = html;
 
-  // อัปเดตสถิติตัวเลขคะแนนรวมและจำนวนคนรีวิว
   document.getElementById('total-reviews-text').innerText = reviewsData.length;
   if(reviewsData.length > 0) {
     let avg = (totalRating / reviewsData.length).toFixed(1);
@@ -524,7 +506,6 @@ function submitReview(e) {
   reviewsData.unshift(newReview);
   renderReviews();
   
-  // Reset form
   document.getElementById('review-form').reset();
   setRating(5);
   alert("ขอบคุณสำหรับรีวิวนะคะ! รีวิวของคุณถูกเพิ่มเรียบร้อยแล้วค่ะ ✨");
@@ -541,18 +522,21 @@ function handleAdminLogin(e) {
   const email = document.getElementById('admin-email').value;
   const pass = document.getElementById('admin-password').value;
 
-  // กำหนด Email และ Password สำหรับแอดมิน
   if(email === "admin@poko.com" && pass === "123456") {
     isAdmin = true;
     document.getElementById('admin-badge-text').innerText = "Admin Mode";
     document.getElementById('admin-badge-btn').classList.add('bg-emerald-500/30', 'border-emerald-400');
     
-    // เปิดการแสดงผลปุ่ม/ฟังก์ชันแอดมินทั้งหมด
+    // แสดงปุ่มและเครื่องมือสำหรับแอดมินทั้งหมด
     document.querySelectorAll('.admin-only').forEach(el => el.classList.remove('hidden'));
+    
+    // ซ่อนช่องรีวิวในโหมดแอดมิน เพื่อป้องกันแอดมินโกงเพิ่มยอดรีวิวเองตามเงื่อนไข
+    const formSection = document.getElementById('customer-review-form-section');
+    if(formSection) formSection.classList.add('hidden');
     
     toggleAdminModal();
     renderReviews();
-    alert("เข้าสู่ระบบแอดมินสำเร็จ! คุณสามารถมองเห็นหลักฐานการซื้อขายและแก้ไขรูปภาพได้แล้ว");
+    alert("เข้าสู่ระบบแอดมินสำเร็จ! ซ่อนฟอร์มเขียนรีวิวเพื่อป้องกันการเพิ่มรีวิวเองเรียบร้อยแล้ว");
   } else {
     document.getElementById('login-error').classList.remove('hidden');
   }
@@ -566,7 +550,7 @@ function deleteReview(id) {
 }
 
 function promptEditBanner() {
-  const newUrl = prompt("กรุณากรอก URL รูปภาพแบนเนอร์ใหม่:", document.getElementById('review-banner-img').src);
+  const newUrl = prompt("กรุณากรอก URL รูปภาพแบนเนอร์ใหม่ (ขนาดแนะนำ 1122*495):", document.getElementById('review-banner-img').src);
   if(newUrl) {
     document.getElementById('review-banner-img').src = newUrl;
   }
@@ -578,12 +562,27 @@ function promptEditImage(type) {
     if(newUrl) {
       document.getElementById('profile-img-tag').src = newUrl;
     }
+  } else if(type === 'logo') {
+    const newUrl = prompt("กรุณากรอก URL รูปโลโก้ร้านค้าใหม่:", document.getElementById('shop-logo-img').src);
+    if(newUrl) {
+      document.getElementById('shop-logo-img').src = newUrl;
+    }
+  }
+}
+
+function promptEditSpecificImage(imgId) {
+  const imgElement = document.getElementById(imgId);
+  if(imgElement) {
+    const newUrl = prompt("กรุณากรอก URL รูปภาพใหม่:", imgElement.src);
+    if(newUrl) {
+      imgElement.src = newUrl;
+    }
   }
 }
 
 // Initial Render
 renderReviews();
-switchTab('REVIEW'); // เปิดมาหน้า Review เป็นค่าเริ่มต้นเพื่อให้ตรวจสอบง่าย
+switchTab('HOME');
 </script>
 
 </body>
