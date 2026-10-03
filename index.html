@@ -14,7 +14,6 @@
 body {
 font-family: 'Kanit', sans-serif;
 }
-/* Hide scrollbar */
 .hide-scrollbar::-webkit-scrollbar {
 display: none;
 }
@@ -22,7 +21,6 @@ display: none;
 -ms-overflow-style: none;
 scrollbar-width: none;
 }
-/* Animations */
 @keyframes fadeln {
 from { opacity: 0; transform: translateY(8px); }
 to { opacity: 1; transform: translateY(0); }
@@ -51,21 +49,34 @@ animation: float-delayed 3.5s ease-in-out infinite 1s;
 <div class="w-full max-w-md bg-[#FAFAFC] min-h-screen shadow-2xl shadow-[#312A4A]/20 flex flex-col relative overflow-hidden">
 <!-- Top curved background -->
 <div class="absolute top-0 left-0 w-full h-[280px] bg-gradient-to-b from-[#312A4A] via-[#8E68D1] to-[#F7F4FB] rounded-b-[40px] z-0"></div>
+
 <!-- Global Decorative Elements -->
 <div class="absolute top-[6%] left-[10%] text-white/40 animate-float"><i data-lucide="star" style="width:20px; height:20px; fill: currentColor;"></i></div>
 <div class="absolute top-[12%] right-[15%] text-white/30 animate-float-delayed"><i data-lucide="sparkles" style="width:28px; height:28px;"></i></div>
 <div class="absolute top-[22%] left-[18%] text-[#312A4A]/20 animate-float" style="animation-duration: 4s;"><i data-lucide="moon" style="width:24px; height:24px; fill:currentColor;"></i></div>
 <div class="absolute top-[32%] right-[8%] text-[#8E68D1]/30 animate-float-delayed"><i data-lucide="star" style="width: 14px; height: 14px; fill: currentColor;"></i></div>
 
-<!-- Admin Login Button (Top Left/Corner next to menu) -->
-<div class="absolute top-6 right-20 z-50">
-<button onclick="toggleAdminLoginModal()" class="p-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-xl border border-white/20 shadow-[0_4px_15px_rgba(0,0,0,0.1)] transition-all text-white" title="Admin Login">
-<i data-lucide="shield-check" style="width: 24px; height: 24px;"></i>
+<!-- Status Bar (แถบเช็คคิวงาน) -->
+<div class="absolute top-4 left-6 z-30 flex items-center gap-2 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full border border-white/30 text-white text-[11px] font-medium[span_0](start_span)[span_0](end_span)">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+<span>Status Bar: เปิดรับคิว</span>
+</div>
+
+<!-- Badges (ปุ่มกลมเล็กๆ ด้านบน) -->
+<div class="absolute top-14 left-6 z-30 flex items-center gap-1.5[span_1](start_span)[span_1](end_span)">
+<span class="px-2.5 py-0.5 bg-[#312A4A]/30 backdrop-blur-sm text-white text-[9px] font-bold rounded-full border border-white/20">OPEN</span>
+<span class="px-2.5 py-0.5 bg-[#8E68D1]/40 backdrop-blur-sm text-white text-[9px] font-bold rounded-full border border-white/20">COMMISSION</span>
+</div>
+
+<!-- Admin Login Button (เมล และ พาส อยู่มุมบนข้างๆ แถบเมนู 3 ขีด) -->
+<div class="absolute top-6 right-20 z-50[span_2](start_span)[span_2](end_span)[span_3](start_span)[span_3](end_span)[span_4](start_span)[span_4](end_span)">
+<button onclick="toggleAdminLoginModal()" class="p-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-xl border border-white/20 shadow-[0_4px_15px_rgba(0,0,0,0.1)] transition-all text-white flex items-center gap-1" title="Admin Login">
+<i data-lucide="user-cog" style="width: 20px; height: 20px;"></i>
 </button>
 </div>
 
 <!-- Hamburger Menu Icon -->
-<div class="absolute top-6 right-6 z-50">
+<div class="absolute top-6 right-6 z-50[span_5](start_span)[span_5](end_span)[span_6](start_span)[span_6](end_span)[span_7](start_span)[span_7](end_span)">
 <button onclick="toggleMenu()" class="p-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-xl border border-white/20 shadow-[0_4px_15px_rgba(0,0,0,0.1)] transition-all text-white">
 <i id="icon-menu" data-lucide="menu" style="width: 24px; height: 24px;"></i>
 <i id="icon-x" data-lucide="x" style="width: 24px; height: 24px;" class="hidden"></i>
@@ -75,7 +86,7 @@ animation: float-delayed 3.5s ease-in-out infinite 1s;
 <!-- Dropdown Menu Overlay -->
 <div id="mobile-menu" class="hidden">
 <div class="fixed inset-0 z-40" onclick="closeMenu()"></div>
-<div class="absolute top-20 right-6 w-48 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/50 overflow-hidden z-50 animate-fadeln">
+<div class="absolute top-20 right-6 w-48 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/50 overflow-hidden z-50 animate-fadeln[span_8](start_span)[span_8](end_span)[span_9](start_span)[span_9](end_span)">
 <div class="flex flex-col py-2">
 <button id="btn-HOME" onclick="switchTab('HOME')" class="px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 bg-[#8E68D1]/10 text-[#8E68D1] border-l-4 border-[#8E68D1]">Home</button>
 <button id="btn-T.O.S" onclick="switchTab('T.O.S')" class="px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 text-stone-600 hover:bg-[#F7F4FB] hover:text-[#8E68D1] border-l-4 border-transparent">Reviews</button>
@@ -117,27 +128,29 @@ animation: float-delayed 3.5s ease-in-out infinite 1s;
 </div>
 </div>
 
-<!-- T.O.S (Changed to Shop Reviews & Customer Feedback) -->
+<!-- T.O.S (หน้า Review ร้านค้า) -->
 <div id="content-T.O.S" class="hidden animate-fadeln">
-<!-- Banner Image requested below Customer Feedback / Shop Reviews -->
-<div class="mb-6 w-full rounded-2xl overflow-hidden shadow-md border border-[#D4C3EF]/30 relative editable-img-container">
-<img src="IMG_6210.png" alt="Banner" class="w-full h-[150px] object-cover editable-img" style="aspect-ratio: 1122/495;" data-img-id="banner-img"/>
+<!-- หัวข้อรีวิว: ย้ายรูปโลโก้อยู่ทางซ้ายและกึ่งกลางระหว่างบรรทัด Customer Feedback และ Shop Reviews พร้อมขยับข้อความไปทางขวา และคงดาวไว้ครบถ้วน[span_10](start_span)[span_10](end_span) -->
+<div class="mb-6 relative mt-4 flex items-center gap-4 px-2">
+<div class="w-14 h-14 shrink-0 rounded-full border-[2px] border-white shadow-[0_4px_10px_rgba(49,42,74,0.1)] overflow-hidden bg-white z-10 editable-img-container">
+<img src="IMG_6210.png" alt="Logo Side" class="w-full h-full object-cover editable-img" data-img-id="side-logo"/>
 </div>
-
-<!-- Header section with shifted text and centered logo between sentences -->
-<div class="text-center mb-6 relative mt-4 flex flex-col items-center">
-<p class="text-[#E5DDF0] font-medium text-sm mb-1 drop-shadow-sm translate-x-3">Customer Feedback</p>
-<div class="w-12 h-12 rounded-full border-[2px] border-white shadow-[0_4px_10px_rgba(49,42,74,0.1)] overflow-hidden bg-white my-1 z-10 editable-img-container">
-<img src="IMG_6210.png" alt="Logo Mini" class="w-full h-full object-cover editable-img" data-img-id="mini-logo"/>
-</div>
-<h2 class="text-2xl font-bold text-[#F7F4FB] flex items-center justify-center gap-2 drop-shadow-md translate-x-3">
-<i data-lucide="star" class="text-[#D4C3EF]" style="width:18px; height: 18px; fill:currentColor;"></i>
+<div class="flex flex-col text-left pl-2">
+<p class="text-[#E5DDF0] font-medium text-xs mb-0.5 drop-shadow-sm">Customer Feedback</p>
+<h2 class="text-xl font-bold text-[#F7F4FB] flex items-center gap-1.5 drop-shadow-md">
+<i data-lucide="star" class="text-[#D4C3EF]" style="width:16px; height: 16px; fill:currentColor;"></i>
 Shop Reviews
-<i data-lucide="star" class="text-[#D4C3EF]" style="width: 18px; height: 18px; fill:currentColor;"></i>
+<i data-lucide="star" class="text-[#D4C3EF]" style="width:16px; height: 16px; fill:currentColor;"></i>
 </h2>
 </div>
+</div>
 
-<!-- Review Summary Box: Left 4.8 Stars | Right 88 People with Icons -->
+<!-- เพิ่มรูปแบนเนอร์ขนาด 1122*495 ไว้ข้างล่างของ Customer Feedback และ Shop Reviews[span_11](start_span)[span_11](end_span) -->
+<div class="mb-6 w-full rounded-2xl overflow-hidden shadow-md border border-[#D4C3EF]/30 relative editable-img-container">
+<img src="IMG_6210.png" alt="Banner" class="w-full object-cover editable-img" style="aspect-ratio: 1122/495;" data-img-id="banner-img"/>
+</div>
+
+<!-- ฝั่งซ้าย 4.8 ดาว | ฝั่งขวา 88 คน [เปลี่ยนอิโมจิเป็นไอคอน][span_12](start_span)[span_12](end_span) -->
 <div class="bg-[#F7F4FB] rounded-[24px] p-4 mb-6 shadow-sm border border-[#D4C3EF]/40 flex justify-around items-center text-center">
 <div class="flex items-center gap-2">
 <i data-lucide="star" class="text-amber-400" style="width:20px; height:20px; fill:currentColor;"></i>
@@ -150,10 +163,10 @@ Shop Reviews
 </div>
 </div>
 
-<!-- Add Review & Proof Upload Section -->
+<!-- ช่องรีวิวสำหรับลูกค้า พร้อมปุ่มอัปโหลดหลักฐานการซื้อขาย (ให้แอดมินเห็นคนเดียว)[span_13](start_span)[span_13](end_span) -->
 <div class="bg-white rounded-[24px] p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[#D4C3EF]/40 relative mb-6">
 <h3 class="font-bold text-[#312A4A] mb-3 flex items-center gap-2 text-sm">
-<i data-lucide="edit-3" style="width:16px; height:16px;" class="text-[#8E68D1]"></i> เขียนรีวิวและส่งหลักฐานการซื้อขาย
+<i data-lucide="edit-3" style="width:16px; height:16px;" class="text-[#8E68D1]"></i> รีวิวร้านค้า & อัปโหลดหลักฐานการซื้อขาย
 </h3>
 <form onsubmit="submitReview(event)" class="space-y-3">
 <div>
@@ -167,24 +180,24 @@ Shop Reviews
 </select>
 </div>
 <div>
-<label class="block text-xs text-stone-500 mb-1">ความคิดเห็นของคุณ</label>
-<textarea id="review-text" rows="2" placeholder="พิมพ์รีวิวร้านค้าที่นี่..." class="w-full p-2.5 rounded-xl border border-[#D4C3EF]/50 text-sm bg-[#F7F4FB] focus:outline-none" required></textarea>
+<label class="block text-xs text-stone-500 mb-1">ความคิดเห็น</label>
+<textarea id="review-text" rows="2" placeholder="พิมพ์รีวิวของคุณที่นี่..." class="w-full p-2.5 rounded-xl border border-[#D4C3EF]/50 text-sm bg-[#F7F4FB] focus:outline-none" required></textarea>
 </div>
 <div>
-<label class="block text-xs text-stone-500 mb-1">อัปโหลดรูปหลักฐานการซื้อขาย (แอดมินเห็นคนเดียว)</label>
+<label class="block text-xs text-stone-500 mb-1">อัปโหลดรูปหลักฐานการซื้อขาย (ให้แอดมินเห็นคนเดียว)</label>
 <input type="file" id="review-proof" accept="image/*" class="w-full text-xs text-stone-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-[#8E68D1]/10 file:text-[#8E68D1] hover:file:bg-[#8E68D1]/20"/>
 </div>
 <button type="submit" class="w-full py-2.5 bg-[#8E68D1] text-white rounded-xl text-xs font-bold tracking-wider uppercase shadow-md hover:bg-[#7a55be] transition-all">ส่งรีวิว</button>
 </form>
 </div>
 
-<!-- Admin Panel for Proofs (Hidden by default, shown when admin logs in) -->
+<!-- ส่วนของช่องรีวิวในโหมดแอดมินถูกลบออกทั้งหมด เหลือไว้เฉพาะกล่องแสดงหลักฐานที่ลูกค้าส่งเข้ามาเพื่อให้แอดมินตรวจสอบคนเดียว[span_14](start_span)[span_14](end_span) -->
 <div id="admin-proofs-section" class="hidden bg-amber-50 border border-amber-200 rounded-[24px] p-5 mb-6">
 <h3 class="font-bold text-amber-800 text-sm mb-3 flex items-center gap-2">
-<i data-lucide="lock" style="width:16px; height:16px;"></i> แผงควบคุมแอดมิน: หลักฐานการซื้อขายของลูกค้า (เห็นเฉพาะแอดมิน)
+<i data-lucide="shield-alert" style="width:16px; height:16px;"></i> แผงแอดมิน: หลักฐานการซื้อขาย (เห็นเฉพาะแอดมินเท่านั้น)
 </h3>
 <div id="admin-proofs-list" class="space-y-3 text-xs text-stone-700">
-<p class="text-stone-400 italic">ยังไม่มีหลักฐานการซื้อขายใหม่</p>
+<p class="text-stone-400 italic">ยังไม่มีหลักฐานการซื้อขายส่งเข้ามา</p>
 </div>
 </div>
 
@@ -249,7 +262,7 @@ Contact
 </div>
 </div>
 
-<!-- Admin Login Modal -->
+<!-- Admin Login Modal (ล็อกอินด้วยเมลและรหัสผ่าน)[span_15](start_span)[span_15](end_span)[span_16](start_span)[span_16](end_span)[span_17](start_span)[span_17](end_span) -->
 <div id="admin-login-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
 <div class="bg-white rounded-2xl p-6 w-80 shadow-2xl animate-fadeln relative">
 <h3 class="font-bold text-[#312A4A] text-base mb-4 flex items-center gap-2"><i data-lucide="lock" style="width:18px; height:18px;"></i> แอดมินล็อกอิน</h3>
@@ -331,23 +344,22 @@ function handleAdminLogin(event) {
 event.preventDefault();
 const email = document.getElementById('admin-email').value;
 const pass = document.getElementById('admin-password').value;
-// จำลองการล็อกอินแอดมิน
 if(email && pass) {
 isAdminLoggedIn = true;
-alert('เข้าสู่ระบบแอดมินสำเร็จ! ตอนนี้คุณสามารถคลิกที่รูปภาพใดก็ได้ในเว็บไซต์เพื่อเปลี่ยนรูปได้ และดูหลักฐานการซื้อขายได้');
+alert('เข้าสู่ระบบแอดมินสำเร็จ! ตอนนี้คุณสามารถคลิกที่รูปภาพใดก็ได้ในเว็บไซต์เพื่อเปลี่ยนรูปได้ และตรวจสอบหลักฐานการซื้อขายของลูกค้าได้[span_18](start_span)[span_18](end_span)');
 toggleAdminLoginModal();
 document.getElementById('admin-proofs-section').classList.remove('hidden');
 enableImageEditor();
 }
 }
 
-// Image Changer for Admin
+// Image Changer for Admin (ให้รูปทุกรูปในเว็บไซต์แอดมินสามารถเปลี่ยนได้)[span_19](start_span)[span_19](end_span)
 function enableImageEditor() {
 const imgContainers = document.querySelectorAll('.editable-img-container');
 imgContainers.forEach(container => {
 if(!container.querySelector('.image-edit-overlay')) {
 const overlay = document.createElement('div');
-overlay.className = 'image-edit-overlay absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity cursor-pointer rounded-xl';
+overlay.className = 'image-edit-overlay absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity cursor-pointer rounded-xl z-20';
 overlay.innerHTML = '<span class="text-white text-[10px] font-bold bg-black/60 px-2 py-1 rounded">เปลี่ยนรูป</span>';
 overlay.onclick = () => {
 const input = document.createElement('input');
@@ -382,7 +394,6 @@ let proofName = 'ไม่มีหลักฐานรูปภาพ';
 
 if(proofInput.files && proofInput.files[0]) {
 proofName = proofInput.files[0].name;
-// จำลองการเก็บหลักฐานให้แอดมินเห็นคนเดียว
 const proofsList = document.getElementById('admin-proofs-list');
 if(proofsList.querySelector('p')) proofsList.innerHTML = '';
 const item = document.createElement('div');
