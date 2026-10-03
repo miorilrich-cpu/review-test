@@ -14,7 +14,6 @@
 body {
   font-family: 'Kanit', sans-serif;
 }
-/* Hide scrollbar */
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -22,7 +21,6 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-/* Animations */
 @keyframes fadeln {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
@@ -57,7 +55,7 @@ body {
 <div class="absolute top-[22%] left-[18%] text-[#312A4A]/20 animate-float" style="animation-duration: 4s;"><i data-lucide="moon" style="width:24px; height:24px; fill:currentColor;"></i></div>
 <div class="absolute top-[32%] right-[8%] text-[#8E68D1]/30 animate-float-delayed"><i data-lucide="star" style="width: 14px; height: 14px; fill: currentColor;"></i></div>
 
-<!-- Admin Login Button (มุมบนข้างๆ แถบเมนู 3 ขีด) -->
+<!-- Admin Login Button -->
 <div class="absolute top-6 right-20 z-50">
 <button onclick="toggleAdminModal()" class="p-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-xl border border-white/20 shadow-[0_4px_15px_rgba(0,0,0,0.1)] transition-all text-white flex items-center justify-center" title="Admin Login">
   <i data-lucide="shield-check" style="width: 24px; height: 24px;"></i>
@@ -73,9 +71,7 @@ body {
 </div>
 <!-- Dropdown Menu Overlay -->
 <div id="mobile-menu" class="hidden">
-<!-- Background overlay to click-close -->
 <div class="fixed inset-0 z-40" onclick="closeMenu()"></div>
-<!-- Menu Box -->
 <div class="absolute top-20 right-6 w-48 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/50 overflow-hidden z-50 animate-fadeln">
 <div class="flex flex-col py-2">
 <button id="btn-HOME" onclick="switchTab('HOME')" class="px-5 py-3 text-sm font-semibold text-left transition-colors flex items-center gap-2 bg-[#8E68D1]/10 text-[#8E68D1] border-l-4 border-[#8E68D1]">Home</button>
@@ -87,23 +83,14 @@ body {
 <!-- Spacer -->
 <div class="pt-24 px-6 relative z-20"></div>
 
-<!-- Status Bar & Badges (คงไว้ 100% ตามเงื่อนไข) -->
-<div class="px-5 mb-4 relative z-10 flex flex-col gap-2">
-  <div class="flex items-center justify-between bg-white/80 backdrop-blur-md px-4 py-2 rounded-2xl shadow-sm border border-[#D4C3EF]/30">
-    <div class="flex items-center gap-2">
-      <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-      <span class="text-xs font-bold text-[#312A4A]">Status Bar: เปิดรับคิวงาน</span>
-    </div>
-    <span class="text-[10px] text-[#8E68D1] font-semibold">คิวว่างเพียบ</span>
-  </div>
-  <div class="flex items-center gap-2">
-    <span class="px-3 py-1 bg-[#8E68D1] text-white text-[10px] font-bold rounded-full shadow-sm flex items-center gap-1">
-      <i data-lucide="sparkles" style="width: 10px; height: 10px;"></i> ป้ายสวย
-    </span>
-    <span class="px-3 py-1 bg-[#312A4A] text-white text-[10px] font-bold rounded-full shadow-sm flex items-center gap-1">
-      <i data-lucide="star" style="width: 10px; height: 10px; fill:currentColor;"></i> งานไว
-    </span>
-  </div>
+<!-- Badges -->
+<div class="px-5 mb-4 relative z-10 flex items-center gap-2">
+  <span class="px-3 py-1 bg-[#8E68D1] text-white text-[10px] font-bold rounded-full shadow-sm flex items-center gap-1">
+    <i data-lucide="sparkles" style="width: 10px; height: 10px;"></i> ป้ายสวย
+  </span>
+  <span class="px-3 py-1 bg-[#312A4A] text-white text-[10px] font-bold rounded-full shadow-sm flex items-center gap-1">
+    <i data-lucide="star" style="width: 10px; height: 10px; fill:currentColor;"></i> งานไว
+  </span>
 </div>
 
 <!-- Dynamic Content Area -->
@@ -136,15 +123,17 @@ body {
 </div>
 </div>
 
-<!-- T.O.S (รีวิวร้านค้า ดีไซน์ตามภาพตัวอย่าง + เพิ่มโลโก้ด้านซ้ายและขยับไปทางขวาตามสั่ง) -->
+<!-- T.O.S (Customer Feedback & Shop Reviews) -->
 <div id="content-T.O.S" class="hidden animate-fadeln">
-<div class="text-center mb-6 relative mt-4">
-<p class="text-[#E5DDF0] font-medium text-sm mb-1 drop-shadow-sm">Customer Feedback</p>
-<!-- ส่วนหัวข้อ Customer Feedback & Shop Reviews ขยับไปทางขวาเล็กน้อยและเพิ่มโลโก้ด้านซ้าย -->
-<div class="flex items-center justify-center gap-3 pl-4">
-  <div class="w-10 h-10 rounded-full border-2 border-white shadow-md overflow-hidden bg-white flex items-center justify-center cursor-pointer shrink-0" onclick="promptChangeImage(this)" title="คลิกเปลี่ยนโลโก้">
+<!-- ส่วนหัวข้อขยับไปทางขวาเล็กน้อย พร้อมโลโก้ทางซ้าย -->
+<div class="text-center mb-6 relative mt-4 pl-6">
+<p class="text-[#E5DDF0] font-medium text-sm mb-1 drop-shadow-sm flex items-center justify-center gap-3">
+  <span class="w-8 h-8 rounded-full border-2 border-white shadow-md overflow-hidden bg-white inline-flex items-center justify-center cursor-pointer shrink-0" onclick="promptChangeImage(this)" title="คลิกเปลี่ยนโลโก้">
     <img src="IMG_6210.png" alt="Logo" class="w-full h-full object-cover editable-img"/>
-  </div>
+  </span>
+  <span>Customer Feedback</span>
+</p>
+<div class="flex items-center justify-center gap-3 pl-8">
   <h2 class="text-2xl font-bold text-[#F7F4FB] flex items-center gap-2 drop-shadow-md">
     <i data-lucide="star" class="text-[#D4C3EF]" style="width:18px; height: 18px; fill:currentColor;"></i>
     Shop Reviews
@@ -152,9 +141,34 @@ body {
 </div>
 </div>
 
-<!-- กล่องรีวิวหลัก ดีไซน์ตามภาพตัวอย่างอ้างอิง -->
+<!-- รูปแบนเนอร์ขนาด 1122*495 -->
+<div class="w-full rounded-2xl overflow-hidden shadow-md border border-[#D4C3EF]/30 bg-white mb-4 cursor-pointer" style="aspect-ratio: 1122/495;" onclick="promptChangeImage(this)" title="คลิกเพื่อเปลี่ยนรูปแบนเนอร์">
+  <img src="IMG_6210.png" alt="Banner 1122x495" class="w-full h-full object-cover editable-img"/>
+</div>
+
+<!-- กล่องแสดงคะแนนเฉลี่ยดาวและจำนวนรีวิว (ย้ายมาไว้ข้างล่างรูปแบนเนอร์ตามสั่ง) -->
+<div class="bg-white rounded-2xl p-4 shadow-md border border-pink-100 mb-6 flex items-center justify-around">
+  <div class="flex items-center gap-2">
+    <i data-lucide="star" class="text-amber-400 fill-amber-400" style="width: 24px; height: 24px;"></i>
+    <div>
+      <span class="text-xl font-extrabold text-[#312A4A]" id="avg-rating">4.8</span>
+      <span class="text-xs text-stone-500"> จาก 5 ดาว</span>
+    </div>
+  </div>
+  <div class="h-8 w-[1px] bg-stone-200"></div>
+  <div class="flex items-center gap-2">
+    <div class="w-7 h-7 rounded-full bg-pink-100 flex items-center justify-center text-pink-500">
+      <i data-lucide="message-circle" class="fill-pink-500" style="width: 14px; height: 14px;"></i>
+    </div>
+    <div>
+      <span class="text-xl font-extrabold text-pink-500" id="total-reviews">128</span>
+      <span class="text-xs text-stone-500"> รีวิว</span>
+    </div>
+  </div>
+</div>
+
+<!-- ช่องรีวิวหลัก -->
 <div class="bg-white rounded-[32px] p-6 shadow-[0_8px_30px_rgba(255,182,193,0.15)] border-2 border-[#FFC0CB] relative mb-6">
-  <!-- ดาวตกแต่งมุมขวาบนเหมือนในภาพ -->
   <div class="absolute -top-3 right-6 text-pink-400 bg-white px-1">
     <i data-lucide="star" style="width: 24px; height: 24px; fill: currentColor;"></i>
   </div>
@@ -166,21 +180,14 @@ body {
       </div>
       <h3 class="text-xl font-bold text-[#FF69B4] tracking-wide">Store Reviews</h3>
     </div>
-    <!-- ปุ่มเขียนรีวิว -->
     <button onclick="openReviewModal()" class="bg-[#FF91A4] hover:bg-[#ff7b92] text-white text-xs font-bold px-4 py-2 rounded-full shadow-sm flex items-center gap-1 transition-all">
       <i data-lucide="plus" style="width: 14px; height: 14px;"></i> เขียนรีวิว
     </button>
   </div>
 
-  <!-- แสดงผลเมื่อยังไม่มีรีวิว หรือแสดงรายการรีวิว -->
   <div id="reviews-container" class="text-center py-6 text-stone-400 text-xs">
     ยังไม่มีรีวิว ร้านเปิดใหม่รอรีวิวจากลูกค้านะคะ
   </div>
-</div>
-
-<!-- เพิ่มรูปแบนเนอร์ขนาด 1122*495 ไว้ข้างล่างของ Customer Feedback / Shop Reviews -->
-<div class="w-full rounded-2xl overflow-hidden shadow-md border border-[#D4C3EF]/30 bg-white mb-6 cursor-pointer" style="aspect-ratio: 1122/495;" onclick="promptChangeImage(this)" title="คลิกเพื่อเปลี่ยนรูปแบนเนอร์">
-  <img src="IMG_6210.png" alt="Banner 1122x495" class="w-full h-full object-cover editable-img"/>
 </div>
 
 </div>
@@ -291,7 +298,6 @@ Contact
       </button>
     </form>
     
-    <!-- พื้นจัดการอนุมัติรีวิวสำหรับแอดมิน (ลบส่วนช่องกรอกรีวิวเองออกตามสั่ง เพื่อป้องกันแอดมินโกง) -->
     <div id="admin-review-panel" class="hidden mt-4 pt-4 border-t border-stone-100">
       <h4 class="text-xs font-bold text-purple-700 mb-2">[แอดมิน] อนุมัติรีวิว & ตรวจสอบหลักฐาน</h4>
       <div id="admin-pending-list" class="space-y-2 max-h-40 overflow-y-auto">
@@ -303,7 +309,6 @@ Contact
 
 <!-- Application Logic -->
 <script>
-// Initialize Lucide Icons
 lucide.createIcons();
 const tabs = ['HOME', 'T.O.S', 'CONTACT'];
 let isAdmin = false;
@@ -371,7 +376,6 @@ function handleAdminLogin(e) {
   renderAdminPendingList();
 }
 
-// ฟังก์ชันเปลี่ยนรูปภาพทุกรูปในเว็บไซต์เมื่อล็อกอินเป็นแอดมิน
 function promptChangeImage(element) {
   if (!isAdmin) {
     alert('กรุณาเข้าสู่ระบบแอดมินก่อนจึงจะสามารถเปลี่ยนรูปภาพได้');
@@ -388,7 +392,6 @@ function promptChangeImage(element) {
   }
 }
 
-// ลูกค้าส่งรีวิว
 function submitReview(e) {
   e.preventDefault();
   const name = document.getElementById('reviewer-name').value;
@@ -438,6 +441,12 @@ function approveReview(index) {
   approvedReviews.push(rev);
   renderApprovedReviews();
   renderAdminPendingList();
+  
+  const totalRevEl = document.getElementById('total-reviews');
+  if (totalRevEl) {
+    totalRevEl.innerText = parseInt(totalRevEl.innerText) + 1;
+  }
+
   alert('อนุมัติและแสดงรีวิวบนหน้าเว็บเรียบร้อยแล้ว');
 }
 
